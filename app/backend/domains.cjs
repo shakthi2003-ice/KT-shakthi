@@ -64,7 +64,7 @@ const getDomain = async (domain) => {
 
 const app = express();
 app.use(cors());
-const port = 5000;
+const port = process.env.PORT;
 
 const notionToken = process.env.NOTION_API_KEY;
 const notionDatabaseId = process.env.NOTION_DATABASE_ID;
