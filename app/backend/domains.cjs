@@ -5,6 +5,7 @@ const util = require("util");
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
+// require("dotenv").config();
 
 const NOTION_API_KEY = "secret_o9Xxhf8GQq5NUCJkw1WKlDkMrvNVNogPIATPkOppmhn";
 // const DOM_DB = "18443df6abb780dc9bb0f06344c8af2a";
@@ -64,7 +65,7 @@ const getDomain = async (domain) => {
 
 const app = express();
 app.use(cors());
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 const notionToken = process.env.NOTION_API_KEY;
 const notionDatabaseId = process.env.NOTION_DATABASE_ID;

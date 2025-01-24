@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "backend": "file:",
     "cors": "^2.8.5"
   }
 }
