@@ -21,7 +21,7 @@ export default function Career() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/domains");
+        const response = await fetch("/api/domains");
         if (!response.ok) {
           throw new Error("Failed to fetch domains");
         }
