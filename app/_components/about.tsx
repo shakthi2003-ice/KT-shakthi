@@ -6,7 +6,10 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section className="flex flex-col md:flex-row gap-8 px-6 py-12 bg-blue-100">
+    <section
+      id="about"
+      className="flex flex-col md:flex-row gap-8 px-6 py-12 bg-blue-100"
+    >
       {/* Left Section */}
       <motion.div
         initial={{ opacity: 0, y: 100 }} // Start with fade and slide up
@@ -20,7 +23,7 @@ export default function About() {
             How It Started
           </h3>
 
-          <h1 className="font-Inter text-[55px] tracking-tight text-black font-bold leading-tight">
+          <h1 className="font-Inter text-[40px] md:text-[55px] tracking-tight text-black font-bold leading-tight break-words">
             Our ultimate dream is empowering curious young minds.
           </h1>
         </div>
