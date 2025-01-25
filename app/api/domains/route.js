@@ -12,22 +12,38 @@ const getDomains = async () => {
   try {
     const response = await notion.databases.query({ database_id: DOM_DB });
 
-    console.log("Raw Notion Response:", JSON.stringify(response, null, 2));
+    console.log(
+      "Raw Notion Response:",
+      JSON.stringify(response.results, null, 2)
+    );
+    // console.log(JSON.stringify(response.results[0].properties, null, 2));
 
     if (!response.results || response.results.length === 0) {
       throw new Error("No domains found in the database.");
     }
+    // response.results.sort((a, b) => {
+    //   return a.properties.Priority.number - b.properties.Priority.number;
+    // });
+    response.results.sort((a, b) => {
+      // Safely access Priority.number and use Infinity as a fallback for missing values
+      const priorityA = a.properties.Priority?.number ?? Infinity;
+      const priorityB = b.properties.Priority?.number ?? Infinity;
+
+      return priorityA - priorityB;
+    });
 
     const domains = response.results.map((row, index) => {
       const profileText = row.properties.Title?.rich_text?.[0]?.plain_text;
       const examNameText = row.properties.Exam?.rich_text?.[0]?.plain_text;
       const imageUrl = row.properties.Image?.files?.[0]?.file?.url;
+      const domain = row.properties.Domain?.title?.[0]?.plain_text;
 
       return {
         id: index,
         Profile: profileText,
         ExamName: examNameText,
         img: imageUrl,
+        domain: domain,
       };
     });
 

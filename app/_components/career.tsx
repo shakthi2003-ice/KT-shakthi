@@ -10,7 +10,7 @@ type CareerOptions = {
   Profile: string;
   ExamName: string;
   img: string;
-  Color: string;
+  domain: string;
 };
 
 export default function Career() {
@@ -33,7 +33,7 @@ export default function Career() {
           img:
             domain.img ||
             "https://prod-files-secure.s3.us-west-2.amazonaws.com/b020cb67-a9a0-4a42-84cd-216945bf98f8/50918ebf-e505-45ab-8810-62cfcffb9058/aviation.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45FSPPWI6X%2F20250124%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250124T204905Z&X-Amz-Expires=3600&X-Amz-Signature=ca34e545dda74a7141f07c6c490b6b000ecab6e2d3eb7b4cef3fd5afadbbd0b2&X-Amz-SignedHeaders=host&x-id=GetObject",
-          Color: domain.Color || "#F0F0F0",
+          domain: domain.domain || "https://kalvithadam.ignitte.org/",
         }));
         setData(careers);
       } catch (error) {
@@ -87,6 +87,7 @@ export default function Career() {
                 Profile={item.Profile || ""}
                 ExamName={item.ExamName}
                 img={item.img}
+                URL={item.domain}
               />
             </motion.div>
           )
