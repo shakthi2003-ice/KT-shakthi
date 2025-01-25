@@ -84,7 +84,7 @@ export default function Main() {
             width={900}
           /> */}
           <iframe
-            className="ml-1 sm:ml-0 rounded-xl"
+            className="ml-1 sm:ml-0 rounded-xl w-[400px] h-[200px] md:w-[900px] md:h-[400px]"
             width="900"
             height="400"
             src="https://www.youtube.com/embed/cZUlPLV1ZUY?si=xE_NpwJRskZ0vBGY"
