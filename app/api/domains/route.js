@@ -12,10 +12,10 @@ const getDomains = async () => {
   try {
     const response = await notion.databases.query({ database_id: DOM_DB });
 
-    console.log(
-      "Raw Notion Response:",
-      JSON.stringify(response.results, null, 2)
-    );
+    // console.log(
+    //   "Raw Notion Response:",
+    //   JSON.stringify(response.results, null, 2)
+    // );
     // console.log(JSON.stringify(response.results[0].properties, null, 2));
 
     if (!response.results || response.results.length === 0) {
