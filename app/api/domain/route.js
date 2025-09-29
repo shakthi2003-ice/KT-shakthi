@@ -75,8 +75,7 @@ export async function GET(req) {
   try {
     // Extract the domain name from the query parameter
     // console.log(req);
-    const { searchParams } = new URL(req.url, "http://localhost");
-    const domainName = searchParams.get("domain");
+    const domainName = req.nextUrl.searchParams.get("domain");
 
     if (!domainName) {
       return NextResponse.json(

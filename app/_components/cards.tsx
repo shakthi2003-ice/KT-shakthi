@@ -18,11 +18,13 @@ export default function Cards({
   URL,
   onClick,
 }: CardsProps) {
-  console.log("Link: ", URL);
   return (
     <div
       className="cursor-pointer shadow-lg rounded-xl overflow-hidden hover:scale-105 transition-transform duration-200"
-      onClick={onClick}
+      onClick={() => {
+        console.log("Clicked Link:", URL);
+        onClick();
+      }}
     >
       <Link
         href={`/${URL}`}
