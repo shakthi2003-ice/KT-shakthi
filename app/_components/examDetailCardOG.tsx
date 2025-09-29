@@ -41,7 +41,7 @@ export default function ExamDetailCard() {
 
         setData(careers);
       } catch (error) {
-        // console.error("Error fetching career data:", error);
+        console.error("Error fetching career data:", error);
       } finally {
         setLoading(false);
       }
