@@ -26,7 +26,7 @@ export default function ExamDetailCard() {
         }
 
         const result = await response.json();
-        console.log("API response:", result);
+        // console.log("API response:", result);
 
         // Transform object into an array to match your component's expectations
         const careers: CareerDetails[] = [
@@ -41,7 +41,7 @@ export default function ExamDetailCard() {
 
         setData(careers);
       } catch (error) {
-        console.error("Error fetching career data:", error);
+        // console.error("Error fetching career data:", error);
       } finally {
         setLoading(false);
       }

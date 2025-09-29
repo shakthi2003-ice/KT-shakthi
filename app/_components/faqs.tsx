@@ -45,10 +45,11 @@ export default function Faqs() {
             </span>
           </div>
           <div className="w-full sm:w-[500px] font-Inter font-medium text-[16px] sm:text-[18px] lg:font-semibold lg:text-[20px]">
-            Career guidance sessions are pivotal in aiding young individuals to
-            make well-informed decisions about their educational pursuits and
-            future professional paths immediately after completing their
-            schooling.
+            You can reach out to us through our official contact channels,
+            including email, social media platforms, and the contact form
+            available on our website. Our team is committed to responding
+            promptly and providing the support you need for any inquiries or
+            guidance requests.
           </div>
         </div>
         <Image
@@ -77,10 +78,11 @@ export default function Faqs() {
             </span>
           </div>
           <div className="w-full sm:w-[500px] font-Inter font-medium text-[16px] sm:text-[18px] lg:font-semibold lg:text-[20px]">
-            Career guidance sessions are pivotal in aiding young individuals to
-            make well-informed decisions about their educational pursuits and
-            future professional paths immediately after completing their
-            schooling.
+            Our website offers a range of resources, insights, and guidance
+            sessions designed to help students explore educational
+            opportunities, career paths, and skill development. By engaging with
+            our content, you can make informed decisions and plan effectively
+            for your academic and professional future.
           </div>
         </div>
       </div>

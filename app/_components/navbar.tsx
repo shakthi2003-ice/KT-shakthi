@@ -1,32 +1,28 @@
 "use client";
 
-import { Link } from "react-scroll";
+import Image from "next/image";
+import Search from "./Search";
+import Link from "next/link";
+
+// import { Link } from "react-scroll";
 
 export default function Navbar() {
   return (
-    <nav className="bg-mainBlue text-white rounded-full flex flex-row items-center my-3 px-6 py-3 w-full max-w-xs sm:max-w-md md:max-w-xl mx-auto md:px-4 md:py-2">
-      <div className="flex gap-5 sm:gap-12 md:gap-20">
-        <span className="text-xs md:text-sm  font-semibold">IGNITTE</span>
-        <a
-          href="https://kalvithadam.ignitte.org/"
-          className="hover:text-gray-300 text-xs md:text-sm"
-        >
+    <nav className="bg-[#74D7FF] h-[54px] flex sticky top-0 z-10">
+      <div className="bg-[#74D7FF] h-[54px] w-1/2 flex gap-8">
+        <Image src="/logo.png" alt="logo" height={48} width={48} />
+        <Search />
+      </div>
+      <div className="text-lg text-[#0046AF]  font-Inter font-bold h-[54px] w-1/2 flex justify-center gap-[100px] items-center">
+        <Link href="/" className="text-xs md:text-sm">
           Home
-        </a>
-        <Link
-          to="about"
-          smooth={true}
-          delay={100}
-          className="hover:text-gray-300 text-xs md:text-sm cursor-pointer"
-        >
+        </Link>
+        <Link href="https://ignitte.org/about" className="text-xs md:text-sm">
           About Us
         </Link>
-        <a
-          href="https://ignitte.org/contact/"
-          className="hover:text-gray-300 text-xs md:text-sm"
-        >
+        <Link href="https://ignitte.org/contact" className="text-xs md:text-sm">
           Contact Us
-        </a>
+        </Link>
       </div>
     </nav>
   );

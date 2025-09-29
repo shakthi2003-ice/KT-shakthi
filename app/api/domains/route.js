@@ -47,7 +47,7 @@ const getDomains = async () => {
       };
     });
 
-    console.log("Mapped Domains:", JSON.stringify(domains, null, 2));
+    // console.log("Mapped Domains:", JSON.stringify(domains, null, 2));
     return domains;
   } catch (error) {
     console.error("Error fetching data from Notion:", error);

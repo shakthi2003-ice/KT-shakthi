@@ -22,9 +22,14 @@ export default {
             opacity: "1",
           },
         },
+        shimmer: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
       },
       animation: {
-        scaleUp: "scaleUp 0.5s ease-out forwards", // Adjust duration and timing
+        scaleUp: "scaleUp 0.5s ease-out forwards",
+        shimmer: "shimmer 1.5s infinite",
       },
       spacing: {
         "18px": "75px",
@@ -112,5 +117,6 @@ export default {
   plugins: [
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     require("tailwind-clip-path"), // Enable clip-path plugin
+    require("tailwindcss-animate"),
   ],
 } satisfies Config;

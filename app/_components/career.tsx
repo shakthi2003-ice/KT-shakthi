@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useEffect, useState } from "react";
 import Cards from "./cards";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 type CareerOptions = {
   id: number;
@@ -17,7 +19,8 @@ export default function Career() {
   const [data, setData] = useState<CareerOptions[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [showMore, setShowMore] = useState<boolean>(false);
-
+  const [clickLoading, setClickLoading] = useState(false);
+  const router = useRouter();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,17 +52,42 @@ export default function Career() {
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
+  const handleCardClick = (url: string) => {
+    setClickLoading(true);
+    router.push(url);
+  };
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <span className="text-xl font-bold">Loading...</span>
-      </div>
+      <>
+        <div className="pt-16 pl-18px mb-2 space-y-2">
+          <div className="w-64 h-10 bg-gray-200 rounded animate-pulse"></div>
+          <div className="flex space-x-2">
+            <div className="w-40 h-10 bg-gray-200 rounded animate-pulse"></div>
+            <div className="w-24 h-12 bg-gray-200 rounded animate-pulse"></div>
+          </div>
+        </div>
+
+        <div className="pb-8 pl-18px pr-18px gap-x-[100px] flex flex-row items-center justify-between animate-pulse">
+          <div className="w-72 h-[350px] bg-gray-200 rounded-3xl animate-pulse"></div>
+          <div className="w-72 h-[350px] bg-gray-200 rounded-3xl animate-pulse"></div>
+          <div className="w-72 h-[350px] bg-gray-200 rounded-3xl animate-pulse"></div>
+        </div>
+      </>
     );
   }
 
   return (
     <div className="bg-white pb-5 -mt-50 md:-mt-60 lg:-mt-0" id="careerSection">
+      {clickLoading && (
+        <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
+          <div className="w-20 h-20 border-4 border-mainBlue border-t-transparent rounded-full animate-spin"></div>
+          <span className="ml-4 text-xl font-semibold text-mainBlue">
+            Loading...
+          </span>
+        </div>
+      )}
+
       <div className="pt-16 pl-18px">
         <div>
           <div className="text-3xl font-Poppins font-bold text-black mb-0">
@@ -88,6 +116,7 @@ export default function Career() {
                 ExamName={item.ExamName}
                 img={item.img}
                 URL={item.domain}
+                onClick={() => handleCardClick(item.domain)}
               />
             </motion.div>
           )
