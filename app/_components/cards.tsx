@@ -18,6 +18,7 @@ export default function Cards({
   URL,
   onClick,
 }: CardsProps) {
+  console.log("Link: ", URL);
   return (
     <div
       className="cursor-pointer shadow-lg rounded-xl overflow-hidden hover:scale-105 transition-transform duration-200"

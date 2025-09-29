@@ -34,7 +34,7 @@ const MainPageClient: React.FC<MainPageClientProps> = ({
   const [activeTab, setActiveTab] = useState(
     headingInfo[0].name.split("(")[0].trim()
   );
-  // console.log(headingInfo[0].name.split("(")[0].trim());
+  console.log(headingInfo[0].name.split("(")[0].trim());
   if (!domainData) {
     return <div>Loading....</div>;
   }
