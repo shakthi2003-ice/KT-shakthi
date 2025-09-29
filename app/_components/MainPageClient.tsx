@@ -22,14 +22,14 @@ const MainPageClient: React.FC<MainPageClientProps> = ({
   groupedBlocks,
 }) => {
   const data = {
-    Name: domainData.Profile,
-    ShortContent: domainData.ShortContent,
-    longContent: domainData.LongContent,
-    Salary: domainData.Details?.Salary || "",
-    Duration: domainData.Details?.Duration || "",
-    TopCollege: domainData.Details?.TopCollege || "",
-    Overview: domainData.Overview,
-    Link: domainData.YoutubeLink,
+    Name: domainData?.Profile || "",
+    ShortContent: domainData?.ShortContent || "",
+    longContent: domainData?.LongContent || "",
+    Salary: domainData?.Details?.Salary || "",
+    Duration: domainData?.Details?.Duration || "",
+    TopCollege: domainData?.Details?.TopCollege || "",
+    Overview: domainData?.Overview || "",
+    Link: domainData?.YoutubeLink || "",
   };
   const [activeTab, setActiveTab] = useState(
     headingInfo[0].name.split("(")[0].trim()
