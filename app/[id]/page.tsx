@@ -401,7 +401,7 @@ export default async function MainPage({
   async function getDomainDetails(domainName: string) {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/domain?domain=${domainName}`
+        `https://kt.ignitte.org/api/domain?domain=${domainName}`
       );
 
       if (!res.ok) {
