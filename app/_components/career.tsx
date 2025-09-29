@@ -4,7 +4,7 @@
 
 import React, { useEffect, useState } from "react";
 import Cards from "./cards";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
 
 type CareerOptions = {
