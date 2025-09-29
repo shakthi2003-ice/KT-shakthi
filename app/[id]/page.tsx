@@ -30,14 +30,14 @@ const fetchMapping = async () => {
 
   while (hasMore) {
     try {
-      const response = await notion.databases.query({
+      const response: any = await notion.databases.query({
         database_id: databaseId,
         start_cursor: startCursor || undefined,
       });
 
       // Process the results of this batch
       const mapping = response.results
-        .map((page) => {
+        .map((page: any) => {
           if ("properties" in page) {
             const customNameProperty = page.properties["Domain"];
             const pageIdProperty = page.properties["Link"];
@@ -63,7 +63,7 @@ const fetchMapping = async () => {
           return null; // Return null for invalid pages
         })
         .filter(
-          (item): item is { customName: string; pageId: string } =>
+          (item: any): item is { customName: string; pageId: string } =>
             item !== null
         );
 
