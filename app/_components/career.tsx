@@ -78,7 +78,7 @@ export default function Career() {
   }
 
   return (
-    <div className="bg-white pb-5 -mt-50 md:-mt-60 lg:-mt-0" id="careerSection">
+    <div className="bg-white pb-5 -mt-50 md:-mt-60 lg:-mt-0" id="career">
       {clickLoading && (
         <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
           <div className="w-20 h-20 border-4 border-mainBlue border-t-transparent rounded-full animate-spin"></div>
@@ -88,7 +88,7 @@ export default function Career() {
         </div>
       )}
 
-      <div className="pt-16 pl-18px">
+      <div className="pl-18px">
         <div>
           <div className="text-3xl font-Poppins font-bold text-black mb-0">
             Find Your Career
@@ -124,7 +124,7 @@ export default function Career() {
       </div>
       <div className="mb-2 flex justify-center mt-8 ">
         <button
-          className="flex items-center justify-center bg-mainBlue p-4 rounded-full transform transition-transform duration-200 hover:scale-105 hover:shadow-lg"
+          className="flex items-center justify-center bg-indigo-600 p-4 rounded-full transform transition-transform duration-200 hover:scale-105 hover:shadow-lg"
           onClick={toggleShowMore}
         >
           <div className="text-md md:text-xl font-Poppins text-white font-semibold">
