@@ -393,7 +393,15 @@ export default async function MainPage({
       const headingText = block.heading_2.rich_text
         .map((text) => text.plain_text)
         .join(""); // Concatenate all the text parts
-      return { id: block?.id, name: headingText || "" };
+
+      // Use the headingText if it exists, otherwise fall back to a default name
+      const finalName =
+        headingText.trim() || `Untitled Heading ${block.id.substring(0, 4)}`;
+
+      return {
+        id: block?.id,
+        name: finalName,
+      };
     });
 
   const groupedBlocks = await renderBlocks(allBlocks);

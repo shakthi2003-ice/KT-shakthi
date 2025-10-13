@@ -28,13 +28,11 @@ const MainPageClient: React.FC<MainPageClientProps> = ({
     Salary: domainData?.Details?.Salary || "",
     Duration: domainData?.Details?.Duration || "",
     TopCollege: domainData?.Details?.TopCollege || "",
-    Overview: domainData?.Overview || "",
     Link: domainData?.YoutubeLink || "",
   };
   const [activeTab, setActiveTab] = useState(
-    headingInfo[0].name.split("(")[0].trim()
+    (headingInfo[0]?.name ?? "").split("(")[0].trim()
   );
-  console.log(headingInfo[0].name.split("(")[0].trim());
   if (!domainData) {
     return <div>Loading....</div>;
   }

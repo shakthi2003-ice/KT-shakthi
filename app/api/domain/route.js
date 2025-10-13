@@ -36,14 +36,8 @@ const getDomainDetails = async (domainName) => {
     const short = domain.properties.ShortContent?.rich_text?.[0]?.plain_text;
     const long = domain.properties.LongContent?.rich_text?.[0]?.plain_text;
     const YTLink = domain.properties.YoutubeLink?.url;
-    const overviewRaw =
-      domain.properties.Overview?.rich_text?.[0]?.plain_text || "";
     const detailRaw =
       domain.properties.Details?.rich_text?.[0]?.plain_text || "";
-    const overviewArray = overviewRaw
-      .split("\n") // split by newline
-      .map((line) => line.replace(/^•\s*/, "")) // remove leading bullet point and space
-      .filter((line) => line.trim() !== ""); // remove empty lines (if any)
     const detailArray = detailRaw
       .split("\n")
       .map((line) => line.replace(/^•\s*/, ""))
@@ -62,7 +56,6 @@ const getDomainDetails = async (domainName) => {
       ShortContent: short,
       LongContent: long,
       YoutubeLink: YTLink,
-      Overview: overviewArray,
       Details: details,
     };
   } catch (error) {
