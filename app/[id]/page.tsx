@@ -393,7 +393,7 @@ export default async function MainPage({
       const headingText = block.heading_2.rich_text
         .map((text) => text.plain_text)
         .join(""); // Concatenate all the text parts
-      return { id: block.id, name: headingText };
+      return { id: block?.id, name: headingText || "" };
     });
 
   const groupedBlocks = await renderBlocks(allBlocks);
@@ -416,7 +416,7 @@ export default async function MainPage({
   }
 
   const domainData = await getDomainDetails(id);
-
+  // console.log(heading2Info);
   return (
     <MainPageClient
       groupedBlocks={groupedBlocks}

@@ -119,7 +119,7 @@ const MainPageClient: React.FC<MainPageClientProps> = ({
 
       <div className="border-b sticky z-10 top-[54px] shadow-sm bg-white mb-4">
         <div className="overflow-x-auto">
-          <div className="flex justify-start md:justify-center space-x-6 md:space-x-10 px-4 md:px-0 py-2 font-semibold text-black whitespace-nowrap">
+          <div className="flex justify-start space-x-6 md:space-x-10 py-2 pl-2 pr-2 font-semibold text-black whitespace-nowrap">
             {headingInfo.length > 0
               ? headingInfo.map((tab: any) => (
                   <ScrollLink
