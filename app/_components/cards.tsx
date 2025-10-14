@@ -20,7 +20,7 @@ export default function Cards({
 }: CardsProps) {
   return (
     <div
-      className="cursor-pointer shadow-lg rounded-xl overflow-hidden hover:scale-105 transition-transform duration-200"
+      className="cursor-pointer sm:shadow-xl rounded-xl overflow-hidden hover:scale-105 transition-transform duration-200"
       onClick={() => {
         console.log("Clicked Link:", URL);
         onClick();
@@ -28,7 +28,7 @@ export default function Cards({
     >
       <Link
         href={`/${URL}`}
-        className="mt-8 w-72 h-[350px] flex flex-col justify-between cursor-pointer items-center rounded-3xl p-6 shadow-xl transform transition-transform duration-200 hover:scale-105 hover:shadow-2xl bg-purple-50"
+        className="mt-8 w-72 h-[350px] flex flex-col justify-between cursor-pointer items-center rounded-3xl p-6 sm:shadow-xl transform transition-transform duration-200 hover:scale-105  bg-purple-50"
       >
         <Image
           src={img}

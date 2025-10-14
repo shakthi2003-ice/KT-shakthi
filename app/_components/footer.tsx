@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-white rounded-lg ">
       <div className="w-full max-w-screen-xl md:py-4">
-        <div className="flex gap-10 items-center justify-between">
+        <div className="flex items-center justify-between">
           <a
             href="https://ignitte.org/"
             className="flex mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
@@ -23,7 +23,7 @@ export default function Footer() {
               IGNITTE
             </span>
           </a>
-          <ul className="flex justify-between items-end text-sm font-medium text-gray-500 sm:mb-0">
+          <ul className="flex list-none justify-around sm:justify-between items-end text-sm font-medium text-gray-500 sm:mb-0">
             <li>
               <a
                 href="https://ignitte.org/about/"

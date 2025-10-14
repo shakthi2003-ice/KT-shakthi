@@ -9,7 +9,7 @@ export default function Navbar_Main() {
 
   return (
     <nav className="bg-indigo-700 sticky top-0 z-50">
-      <div className="max-w-screen-xl mx-auto flex flex-wrap justify-between items-center p-4">
+      <div className="max-w-screen-[4000px] mx-auto flex flex-wrap justify-between items-center p-4">
         <Link
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"

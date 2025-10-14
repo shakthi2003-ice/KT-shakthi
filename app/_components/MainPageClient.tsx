@@ -115,7 +115,7 @@ const MainPageClient: React.FC<MainPageClientProps> = ({
         </div>
       </div>
 
-      <div className="border-b sticky z-10 top-[64px] shadow-sm bg-white mb-4">
+      <div className="border-b sticky z-10 top-[70px] shadow-sm bg-white mb-4">
         <div className="overflow-x-auto">
           <div className="flex justify-start space-x-6 md:space-x-10 py-2 pl-2 pr-2 font-semibold text-black whitespace-nowrap">
             {headingInfo.length > 0
