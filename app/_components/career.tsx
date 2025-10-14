@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import Cards from "./cards";
 import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
+import LoaderOverlay from "./LoaderOverlay";
 
 type CareerOptions = {
   id: number;
@@ -52,8 +53,9 @@ export default function Career() {
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
-  const handleCardClick = (url: string) => {
+  const handleCardClick = async (url: string) => {
     setClickLoading(true);
+    await new Promise((r) => setTimeout(r, 300));
     router.push(url);
   };
 
@@ -79,14 +81,7 @@ export default function Career() {
 
   return (
     <div className="bg-white pb-5" id="career">
-      {clickLoading && (
-        <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
-          <div className="w-20 h-20 border-4 border-mainBlue border-t-transparent rounded-full animate-spin"></div>
-          <span className="ml-4 text-xl font-semibold text-mainBlue">
-            Loading...
-          </span>
-        </div>
-      )}
+      {clickLoading && <LoaderOverlay />}
 
       <div className="flex flex-col items-center justify-center md:flex md:justify-start md:items-start md:pl-18px">
         <div className="text-3xl font-Poppins font-bold text-black mb-0">

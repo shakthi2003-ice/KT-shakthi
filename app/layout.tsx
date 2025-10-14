@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import RouteLoader from "./_components/RouteLoader";
 // import Head from "next/head";
 // import { SidebarProvider } from "@/components/ui/sidebar";
 
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased vsc-initialized`}
       >
+        <RouteLoader />
         {children}
       </body>
     </html>

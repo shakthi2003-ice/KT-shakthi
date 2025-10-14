@@ -11,6 +11,7 @@ import { Element } from "react-scroll";
 import { MyPieChart } from "../_components/MyPieChart";
 import MyBarChart from "../_components/MyBarChart";
 import { renderNotionText } from "@/hooks/notionRenderer";
+import Footer from "../_components/footer";
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
@@ -335,7 +336,55 @@ const renderBlocks = async (
         );
         break;
       }
+      case "table": {
+        const tableRowsResponse = await notion.blocks.children.list({
+          block_id: block.id,
+        });
 
+        const tableRows = tableRowsResponse.results.filter(
+          (row) => isBlockObjectResponse(row) && row.type === "table_row"
+        ) as BlockObjectResponse[];
+
+        const hasHeader =
+          block.table.has_column_header || block.table.has_row_header;
+
+        const renderedRows = tableRows.map((row, rowIndex) => {
+          const isHeaderRow = block.table.has_column_header && rowIndex === 0;
+
+          const cells = (row as any).table_row.cells;
+
+          const renderedCells = cells.map((cell: any, cellIndex: number) => {
+            const isHeaderCell =
+              (block.table.has_row_header && cellIndex === 0) || isHeaderRow;
+            const CellTag = isHeaderCell ? "th" : "td";
+
+            return (
+              <CellTag
+                key={cellIndex}
+                className={`border border-gray-300 p-2 ${
+                  isHeaderCell ? "font-bold bg-gray-100" : "text-sm"
+                }`}
+              >
+                {renderNotionText(cell)}
+              </CellTag>
+            );
+          });
+
+          return <tr key={row.id}>{renderedCells}</tr>;
+        });
+
+        groupedBlocks.push(
+          <div
+            key={block.id}
+            className="overflow-x-auto my-4 shadow-md rounded-lg"
+          >
+            <table className="w-full border-collapse border border-gray-300">
+              <tbody>{renderedRows}</tbody>
+            </table>
+          </div>
+        );
+        break;
+      }
       case "divider":
         groupedBlocks.push(
           <hr key={block.id} className="my-6 border-t border-gray-300" />
@@ -426,11 +475,18 @@ export default async function MainPage({
   const domainData = await getDomainDetails(id);
   // console.log(heading2Info);
   return (
-    <MainPageClient
-      groupedBlocks={groupedBlocks}
-      careerName={id}
-      domainData={domainData}
-      headingInfo={heading2Info} // Pass heading2Info as a prop
-    />
+    <>
+      <MainPageClient
+        groupedBlocks={groupedBlocks}
+        careerName={id}
+        domainData={domainData}
+        headingInfo={heading2Info} // Pass heading2Info as a prop
+      />
+
+      <Footer />
+    </>
   );
+  // throw new Error("Test client error!");
+
+  // return <h1>Hello World</h1>;
 }
