@@ -17,9 +17,9 @@ export default function Navbar_Main() {
           <Image
             src="/logo.png"
             alt="Kalvithadam Logo"
-            width={30}
-            height={250}
-            className="h-8"
+            width={20}
+            height={750}
+            style={{ height: "40px", width: "auto" }}
           />
           <span className="text-2xl font-Inter font-bold text-white">
             Kalvithadam
@@ -56,7 +56,7 @@ export default function Navbar_Main() {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden p-2 rounded-md text-white hover:text-[#1A1A1A] focus:outline-none"
+          className="md:hidden p-2 rounded-md text-white  focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           <svg
@@ -88,7 +88,7 @@ export default function Navbar_Main() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-indigo-600 border-t border-indigo-700">
-          <ul className="flex flex-col p-4 space-y-4">
+          <ul className="flex flex-col list-none p-4 space-y-4">
             <li>
               <Link
                 href="/"

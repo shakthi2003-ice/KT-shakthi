@@ -115,7 +115,7 @@ const MainPageClient: React.FC<MainPageClientProps> = ({
         </div>
       </div>
 
-      <div className="border-b sticky z-10 top-[54px] shadow-sm bg-white mb-4">
+      <div className="border-b sticky z-10 top-[64px] shadow-sm bg-white mb-4">
         <div className="overflow-x-auto">
           <div className="flex justify-start space-x-6 md:space-x-10 py-2 pl-2 pr-2 font-semibold text-black whitespace-nowrap">
             {headingInfo.length > 0
@@ -123,7 +123,7 @@ const MainPageClient: React.FC<MainPageClientProps> = ({
                   <ScrollLink
                     to={tab.id}
                     smooth={true}
-                    duration={500}
+                    duration={700}
                     key={tab.id}
                     offset={-120}
                     onClick={() => setActiveTab(tab.name.split("(")[0].trim())}

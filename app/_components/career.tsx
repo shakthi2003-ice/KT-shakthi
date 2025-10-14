@@ -60,15 +60,15 @@ export default function Career() {
   if (loading) {
     return (
       <>
-        <div className="pt-16 pl-18px mb-2 space-y-2">
+        <div className="flex flex-col items-center justify-center md:flex md:justify-start md:items-start md:pl-18px">
           <div className="w-64 h-10 bg-gray-200 rounded animate-pulse"></div>
-          <div className="flex space-x-2">
+          <div className="flex mt-1 space-x-2">
             <div className="w-40 h-10 bg-gray-200 rounded animate-pulse"></div>
-            <div className="w-24 h-12 bg-gray-200 rounded animate-pulse"></div>
+            <div className="w-24 h-10 bg-gray-200 rounded animate-pulse"></div>
           </div>
         </div>
 
-        <div className="pb-8 pl-18px pr-18px gap-x-[100px] flex flex-row items-center justify-between animate-pulse">
+        <div className="pb-8 mt-4 pl-18px pr-18px md:gap-x-[100px] flex gap-y-4 flex-col md:flex-row items-center justify-between animate-pulse">
           <div className="w-72 h-[350px] bg-gray-200 rounded-3xl animate-pulse"></div>
           <div className="w-72 h-[350px] bg-gray-200 rounded-3xl animate-pulse"></div>
           <div className="w-72 h-[350px] bg-gray-200 rounded-3xl animate-pulse"></div>
@@ -78,7 +78,7 @@ export default function Career() {
   }
 
   return (
-    <div className="bg-white pb-5 -mt-50 md:-mt-60 lg:-mt-0" id="career">
+    <div className="bg-white pb-5" id="career">
       {clickLoading && (
         <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
           <div className="w-20 h-20 border-4 border-mainBlue border-t-transparent rounded-full animate-spin"></div>
@@ -88,19 +88,18 @@ export default function Career() {
         </div>
       )}
 
-      <div className="pl-18px">
-        <div>
-          <div className="text-3xl font-Poppins font-bold text-black mb-0">
-            Find Your Career
-          </div>
-          <div className="leading-none -mt-3">
-            <span className="text-3xl font-Poppins font-bold text-black">
-              Start Your
-            </span>
-            <span className="text-4xl font-Rochester text-black"> journey</span>
-          </div>
+      <div className="flex flex-col items-center justify-center md:flex md:justify-start md:items-start md:pl-18px">
+        <div className="text-3xl font-Poppins font-bold text-black mb-0">
+          Find Your Career
+        </div>
+        <div className="leading-none -mt-3">
+          <span className="text-3xl font-Poppins font-bold text-black">
+            Start Your
+          </span>
+          <span className="text-4xl font-Rochester text-black"> journey</span>
         </div>
       </div>
+
       <div className="flex flex-wrap gap-x-[100px] justify-center">
         {(showMore ? data : data.slice(0, 3)).map(
           (item: CareerOptions, index) => (
