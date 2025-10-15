@@ -43,7 +43,7 @@ export default function MyBarChart({ title, data, keys }: MyBarChartProps) {
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(value) => String(value).slice(0, 3)}
+              // tickFormatter={(value) => String(value).slice(0, 10)}
             />
             <ChartTooltip content={<ChartTooltipContent hideLabel />} />
             <ChartLegend content={<ChartLegendContent />} />

@@ -12,6 +12,7 @@ import { MyPieChart } from "../_components/MyPieChart";
 import MyBarChart from "../_components/MyBarChart";
 import { renderNotionText } from "@/hooks/notionRenderer";
 import Footer from "../_components/footer";
+import Image from "next/image";
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
@@ -247,11 +248,6 @@ const renderBlocks = async (
                   title={chartTitle}
                   data={chartData}
                 />
-                <MyPieChart
-                  key={tableBlock.id}
-                  title={chartTitle}
-                  data={chartData}
-                />
               </div>
             );
 
@@ -385,6 +381,52 @@ const renderBlocks = async (
         );
         break;
       }
+      // ... (inside renderBlocks function, inside the switch statement)
+
+      case "image": {
+        // 1. Determine the correct URL based on image type (file or external)
+        const imageUrl =
+          block.image.type === "external"
+            ? block.image.external.url
+            : block.image.file.url;
+
+        // 2. Safely render the caption
+        const caption = block.image.caption;
+        const captionJsx =
+          caption && caption.length > 0 ? renderNotionText(caption) : null;
+
+        const altText = captionJsx
+          ? caption[0]?.plain_text || "Notion image"
+          : "Notion image";
+
+        // 3. Push the structured figure element using Next.js Image component
+        groupedBlocks.push(
+          <figure key={block.id} className="my-6">
+            {/* We wrap the Next.js Image component in a div 
+               to manage its aspect ratio and position.
+               'relative' is required for 'fill'.
+               I'm using a responsive aspect ratio for the container (e.g., aspect-video or pt-[56.25%] for 16:9)
+            */}
+            <div className="relative w-full h-96 max-h-[80vh] mx-auto rounded-lg shadow-lg overflow-hidden">
+              <Image
+                src={imageUrl}
+                alt={altText}
+                fill
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+
+            {/* Render caption if it exists */}
+            {captionJsx && (
+              <figcaption className="text-center text-sm text-gray-500 mt-2 p-2">
+                {captionJsx}
+              </figcaption>
+            )}
+          </figure>
+        );
+        break;
+      }
+      // ...
       case "divider":
         groupedBlocks.push(
           <hr key={block.id} className="my-6 border-t border-gray-300" />
@@ -439,11 +481,10 @@ export default async function MainPage({
         isBlockObjectResponse(block) && block.type === "heading_2"
     )
     .map((block) => {
-      const headingText = block.heading_2.rich_text
+      let headingText = block.heading_2.rich_text
         .map((text) => text.plain_text)
-        .join(""); // Concatenate all the text parts
-
-      // Use the headingText if it exists, otherwise fall back to a default name
+        .join("");
+      headingText = headingText.replace(/:/g, "");
       const finalName =
         headingText.trim() || `Untitled Heading ${block.id.substring(0, 4)}`;
 

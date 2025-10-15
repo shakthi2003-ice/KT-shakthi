@@ -11,7 +11,8 @@ import Image from "next/image";
 // import MainPageClient from "../_components/MainPageClient";
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const convertToEmbedUrl = (originalUrl: any) => {
-  const url = new URL(originalUrl);
+  const url =
+    new URL(originalUrl) ?? "https://www.youtube.com/watch?v=9FMnyBv9x2c";
   const videoId = url.searchParams.get("v"); // Extract the "v" parameter
 
   if (!videoId) {

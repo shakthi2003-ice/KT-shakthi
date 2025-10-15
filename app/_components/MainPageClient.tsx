@@ -38,12 +38,13 @@ const MainPageClient: React.FC<MainPageClientProps> = ({
   }
   const convertToEmbedUrl = (originalUrl: any) => {
     try {
-      if (!originalUrl) {
-        throw new Error("YouTube link is missing");
+      const defaultVideoUrl = "https://www.youtube.com/watch?v=9FMnyBv9x2c";
+      const urlToParse = originalUrl || defaultVideoUrl;
+      const url = new URL(urlToParse);
+      let videoId = url.searchParams.get("v");
+      if (!videoId && url.hostname.includes("youtu.be")) {
+        videoId = url.pathname.slice(1);
       }
-
-      const url = new URL(originalUrl);
-      const videoId = url.searchParams.get("v");
 
       if (!videoId) {
         throw new Error("Invalid YouTube URL or VIDEO_ID not found.");
