@@ -499,7 +499,7 @@ export default async function MainPage({
   async function getDomainDetails(domainName: string) {
     try {
       const res = await fetch(
-        `https://kt.ignitte.org/api/domain?domain=${domainName}`
+        `https://kalvithadam.ignitte.org/api/domain?domain=${domainName}`
       );
 
       if (!res.ok) {
